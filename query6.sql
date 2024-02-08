@@ -12,6 +12,8 @@ If there is more than one student with the same grade (1-7) assigned to them, or
 
 Write a query to help Eve*/
 
+
+
 With temp as (select students.name, students.marks, grades.grade from students join grades on students.marks >= grades.min_mark and students.marks <= grades.max_mark),
 temp2 as (select 
 case when grade >=8 then name 
