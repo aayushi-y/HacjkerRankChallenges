@@ -21,3 +21,25 @@ select * from city where countrycode = 'JPN';
 /*Query a list of CITY and STATE from the STATION table.*/
 
 select city, state from station;
+
+/* Query the names of all the Japanese cities in the CITY table. The COUNTRYCODE for Japan is JPN.*/
+
+select name from city where countrycode = "JPN";
+
+/*Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer.*/
+
+select distinct city from station where id%2 = 0
+
+/*Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.*/
+
+select count(city) - count(distinct(city)) from station;
+
+/*Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.*/
+
+select distinct city from station where substring(city, 1, 1) = 'a' or
+substring(city, 1, 1) = 'e' or substring(city, 1, 1) = 'i' or substring(city, 1, 1) = 'o'or substring(city, 1, 1) = 'u';
+
+/*Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.*/
+
+select distinct city from station where substring(city, length(city), 1) = 'a' or
+substring(city, length(city), 1) = 'e' or substring(city, length(city), 1) = 'i' or substring(city, length(city), 1) = 'o'or substring(city, length(city), 1) = 'u';
