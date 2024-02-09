@@ -43,3 +43,10 @@ substring(city, 1, 1) = 'e' or substring(city, 1, 1) = 'i' or substring(city, 1,
 
 select distinct city from station where substring(city, length(city), 1) = 'a' or
 substring(city, length(city), 1) = 'e' or substring(city, length(city), 1) = 'i' or substring(city, length(city), 1) = 'o'or substring(city, length(city), 1) = 'u';
+
+/*Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.*/
+
+with temp1 as (select city from station where substring(city, 1,1) = 'a' or substring(city, 1,1) = 'e' or substring(city, 1,1) = 'i' or substring(city, 1,1) = 'o' or substring(city, 1,1) = 'u'),
+temp2 as (select city from station where substring(city, length(city),1) = 'a' or substring(city,length(city),1) = 'e' or substring(city,length(city),1) = 'i' or substring(city,length(city),1) = 'o'
+or substring(city,length(city),1) = 'u')
+select temp1.city from temp1 inner join temp2 on temp1.city = temp2.city;
